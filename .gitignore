@@ -2,7 +2,7 @@
 *~
 
 #IntelliJ
-.idea
+.idea/
 
 #Django
 local_settings.py
