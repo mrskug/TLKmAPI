@@ -1,3 +1,9 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from TLKrest.serializers import PersonSerializer
+from TLKdb.models import Person
 
-# Create your views here.
+
+# ViewSets define the view behavior.
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
