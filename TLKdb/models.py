@@ -71,7 +71,7 @@ class Person(models.Model):
 
 
 class Member(models.Model):
-    year = models.DateField()
+    year = models.IntegerField()
     type = models.ForeignKey(MemberType, related_name='members')
     person = models.ForeignKey(Person, related_name='members')
 
@@ -80,7 +80,7 @@ class Member(models.Model):
 
 
 class Board(models.Model):
-    year = models.DateField()
+    year = models.IntegerField()
     type = models.ForeignKey(BoardPosition, related_name='boards')
     person = models.ForeignKey(Person, related_name='boards')
 
@@ -89,7 +89,7 @@ class Board(models.Model):
 
 
 class Official(models.Model):
-    year = models.DateField()
+    year = models.IntegerField()
     type = models.ForeignKey(OfficialType, related_name='officials')
     person = models.ForeignKey(Person, related_name='officials')
 
@@ -98,7 +98,7 @@ class Official(models.Model):
 
 
 class Merit(models.Model):
-    year = models.DateField()
+    year = models.IntegerField()
     type = models.ForeignKey(MeritType, related_name='merits')
     person = models.ForeignKey(Person, related_name='merits')
 
@@ -107,7 +107,7 @@ class Merit(models.Model):
 
 
 class Committee(models.Model):
-    year = models.DateField()
+    year = models.IntegerField(max_length=4)
     type = models.ForeignKey(CommitteeType, related_name='committees')
     person = models.ForeignKey(Person, related_name='committees')
 
