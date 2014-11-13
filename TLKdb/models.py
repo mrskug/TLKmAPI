@@ -107,7 +107,7 @@ class Merit(models.Model):
 
 
 class Committee(models.Model):
-    year = models.IntegerField(max_length=4)
+    year = models.IntegerField()
     type = models.ForeignKey(CommitteeType, related_name='committees')
     person = models.ForeignKey(Person, related_name='committees')
 
