@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from TLKrest.serializers import PersonSerializer
+from TLKrest.serializers import *
 from TLKdb.models import *
 
 
@@ -12,3 +12,7 @@ class PersonViewSet(viewsets.ModelViewSet):
     """
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+class MemberViewSet(viewsets.ModelViewSet):
+    queryset = Member.objects.all()
+    serializer_class = MemberSerializer

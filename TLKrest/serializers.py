@@ -6,39 +6,43 @@ from TLKdb.models import *
 # Serializers define the API representation.
 
 class MemberSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=MemberType.objects.all())
     class Meta:
         model = Member
-        fields = ('year', 'type')
+        fields = ('pk', 'person', 'year', 'type')
 
 
 class BoardSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=BoardPosition.objects.all())
     class Meta:
         model = Board
-        fields = ('year', 'type')
+        fields = ('pk', 'person', 'year', 'type')
 
 
 class OfficialSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=OfficialType.objects.all())
     class Meta:
         model = Official
-        fields = ('year', 'type')
+        fields = ('pk', 'person', 'year', 'type')
 
 
 class MeritSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=MeritType.objects.all())
     class Meta:
         model = Merit
-        fields = ('year', 'type')
+        fields = ('pk', 'person', 'year', 'type')
 
 
 class CommitteeSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=True, slug_field='name')
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=CommitteeType.objects.all())
     class Meta:
         model = Committee
-        fields = ('year', 'type')
-
+        fields = ('pk', 'person', 'year', 'type')
 
 class PersonSerializer(serializers.ModelSerializer):
     members = MemberSerializer(many=True)
