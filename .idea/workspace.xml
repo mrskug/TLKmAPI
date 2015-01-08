@@ -604,6 +604,7 @@
       <option name="project" value="LOCAL" />
       <updated>1420721967279</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00014" summary="update of stable-req.txt">
       <created>1420722083726</created>
       <option name="number" value="00014" />
@@ -611,6 +612,9 @@
       <updated>1420722083726</updated>
     </task>
     <option name="localTasksCounter" value="15" />
+=======
+    <option name="localTasksCounter" value="14" />
+>>>>>>> c4f285233b89196ff50c2694db678cdad5a73f89
     <servers />
   </component>
   <component name="ToolWindowManager">
