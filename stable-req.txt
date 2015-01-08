@@ -3,4 +3,4 @@ Markdown==2.5.1
 Pygments==1.6
 django-filter==0.8
 djangorestframework==3.0.0
-#-e git+https://github.com/tomchristie/django-rest-framework.git#egg=djangorestframework
+
