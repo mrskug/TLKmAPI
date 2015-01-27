@@ -16,3 +16,6 @@ class PersonViewSet(viewsets.ModelViewSet):
 class MemberViewSet(viewsets.ModelViewSet):
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)

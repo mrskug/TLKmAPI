@@ -1,0 +1,37 @@
+{
+    "firstname": "Christoffer", 
+    "middlenames": "Sebastian Alexander", 
+    "lastname": "Holmberg", 
+    "dob": "1983-01-24", 
+    "dod": null, 
+    "birthplace": "Espoo", 
+    "email": "holmberg@arcada.fi", 
+    "address": "Lähdepuistontie 18 B 52", 
+    "city": "Vantaa", 
+    "zip": "01230", 
+    "country": "Finland", 
+    "joined": "2004-09-01", 
+    "graduated": null, 
+    "company": "skug Inc.", 
+    "company_email": "skug@skug.fi", 
+    "company_phone": "+358415455224", 
+    "notes": "Derp", 
+    "members": [
+        {
+            "pk": 1, 
+            "person": 1, 
+            "year": 2004, 
+            "type": "Medlem"
+        }, 
+        {
+            "pk": 2, 
+            "person": 1, 
+            "year": 2005, 
+            "type": "Ständig"
+        }
+    ], 
+    "boards": [], 
+    "officials": [], 
+    "merits": [], 
+    "committees": []
+}
