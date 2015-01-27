@@ -3,6 +3,7 @@
 
 #IntelliJ
 #.idea/
+.idea/workspace.xml
 
 #Django
 local_settings.py
