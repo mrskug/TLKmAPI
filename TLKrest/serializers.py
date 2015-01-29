@@ -3,6 +3,36 @@ from rest_framework import serializers
 from TLKdb.models import *
 
 
+class MemberTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MemberType
+        fields = ('pk', 'name')
+
+class BoardPositionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BoardPosition
+        fields = ('pk', 'name')
+
+class CommitteeTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CommitteeType
+        fields = ('pk', 'name')
+
+class OfficialTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = OfficialType
+        fields = ('pk', 'name')
+
+class MeritTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = MeritType
+        fields = ('pk', 'name')
+
 # Serializers define the API representation.
 
 class MemberSerializer(serializers.ModelSerializer):
@@ -11,7 +41,6 @@ class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Member
         fields = ('pk', 'person', 'year', 'type')
-        depth = 0
 
 class BoardSerializer(serializers.ModelSerializer):
     type = serializers.SlugRelatedField(read_only=False, slug_field='name',
@@ -19,7 +48,6 @@ class BoardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Board
         fields = ('pk', 'person', 'year', 'type')
-        depth = 0
 
 
 class OfficialSerializer(serializers.ModelSerializer):
@@ -28,7 +56,6 @@ class OfficialSerializer(serializers.ModelSerializer):
     class Meta:
         model = Official
         fields = ('pk', 'person', 'year', 'type')
-        depth = 0
 
 
 class MeritSerializer(serializers.ModelSerializer):
@@ -37,7 +64,6 @@ class MeritSerializer(serializers.ModelSerializer):
     class Meta:
         model = Merit
         fields = ('pk', 'person', 'year', 'type')
-        depth = 0
 
 
 class CommitteeSerializer(serializers.ModelSerializer):
@@ -46,14 +72,13 @@ class CommitteeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Committee
         fields = ('pk', 'person', 'year', 'type')
-        depth = 0
 
 class PersonSerializer(serializers.ModelSerializer):
-    #members = MemberSerializer(many=True, required=False)
-    #boards = BoardSerializer(many=True, required=False)
-    #officials = OfficialSerializer(many=True, required=False)
-    #merits = MeritSerializer(many=True, required=False)
-    #committees = CommitteeSerializer(many=True, required=False)
+    members = MemberSerializer(many=True, required=False, read_only=True)
+    boards = BoardSerializer(many=True, required=False, read_only=True)
+    officials = OfficialSerializer(many=True, required=False, read_only=True)
+    merits = MeritSerializer(many=True, required=False, read_only=True)
+    committees = CommitteeSerializer(many=True, required=False, read_only=True)
 
     class Meta:
         model = Person
@@ -64,7 +89,7 @@ class PersonSerializer(serializers.ModelSerializer):
                   'company_email', 'company_phone',
                   'notes', 'members', 'boards',
                   'officials', 'merits', 'committees')
-        depth = 1
+        #depth = 2
 
     '''# Untested !!
     def create(self, validated_data):
