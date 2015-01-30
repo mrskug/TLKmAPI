@@ -1,12 +1,14 @@
 from django.conf.urls import url, include
 from rest_framework import routers
 
-from TLKrest.views import PersonViewSet, MemberViewSet
+from TLKrest.views import *
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'persons', PersonViewSet)
 router.register(r'members', MemberViewSet)
+router.register(r'addmembers', MemberAddViewSet)
+router.register(r'membertypes', MemberTypeViewSet)
 
 
 # Wire up our API using automatic URL routing.
