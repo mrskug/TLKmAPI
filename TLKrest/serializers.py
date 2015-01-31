@@ -33,21 +33,15 @@ class MeritTypeSerializer(serializers.ModelSerializer):
         fields = ('pk', 'name')
 
 class MemberAddSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='pk', queryset=MemberType.objects.all())
+    type = serializers.SlugRelatedField(read_only=False, slug_field='pk',
+                                        queryset=MemberType.objects.all())
 
     class Meta:
         model = Member
         fields = ('pk', 'person', 'year', 'type')
-'''
-    def create(self, validated_data):
-        member = Member.objects.create(**validated_data)
-        return member
 
-    def update(self, instance, validated_data):
-        pass
-'''
 class BoardAddSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+    type = serializers.SlugRelatedField(read_only=False, slug_field='pk',
                                         queryset=BoardPosition.objects.all())
     class Meta:
         model = Board
@@ -55,7 +49,7 @@ class BoardAddSerializer(serializers.ModelSerializer):
 
 
 class OfficialAddSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+    type = serializers.SlugRelatedField(read_only=False, slug_field='pk',
                                         queryset=OfficialType.objects.all())
     class Meta:
         model = Official
@@ -63,7 +57,7 @@ class OfficialAddSerializer(serializers.ModelSerializer):
 
 
 class MeritAddSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+    type = serializers.SlugRelatedField(read_only=False, slug_field='pk',
                                         queryset=MeritType.objects.all())
     class Meta:
         model = Merit
@@ -71,7 +65,7 @@ class MeritAddSerializer(serializers.ModelSerializer):
 
 
 class CommitteeAddSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+    type = serializers.SlugRelatedField(read_only=False, slug_field='pk',
                                         queryset=CommitteeType.objects.all())
     class Meta:
         model = Committee
@@ -81,9 +75,8 @@ class CommitteeAddSerializer(serializers.ModelSerializer):
 # Serializers define the API representation.
     # TODO:  Make separate set for adding with pk instead of "name"
 class MemberSerializer(serializers.ModelSerializer):
-    type = serializers.SlugRelatedField(read_only=False, slug_field='name', queryset=MemberType.objects.all())
-    #type = MemberTypeSerializer(many=True)
-
+    type = serializers.SlugRelatedField(read_only=False, slug_field='name',
+                                        queryset=MemberType.objects.all())
     class Meta:
         model = Member
         fields = ('pk', 'person', 'year', 'type')
