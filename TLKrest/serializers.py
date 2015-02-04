@@ -73,7 +73,6 @@ class CommitteeAddSerializer(serializers.ModelSerializer):
 
 
 # Serializers define the API representation.
-    # TODO:  Make separate set for adding with pk instead of "name"
 class MemberSerializer(serializers.ModelSerializer):
     type = serializers.SlugRelatedField(read_only=False, slug_field='name',
                                         queryset=MemberType.objects.all())
@@ -120,11 +119,11 @@ class CommitteeSerializer(serializers.ModelSerializer):
         fields = ('pk', 'person', 'year', 'type')
 
 class PersonSerializer(serializers.ModelSerializer):
-    members = MemberSerializer(many=True, required=False, read_only=True)
-    boards = BoardSerializer(many=True, required=False, read_only=True)
-    officials = OfficialSerializer(many=True, required=False, read_only=True)
-    merits = MeritSerializer(many=True, required=False, read_only=True)
-    committees = CommitteeSerializer(many=True, required=False, read_only=True)
+    members = MemberSerializer(many=True, required=False, read_only=False)
+    boards = BoardSerializer(many=True, required=False, read_only=False)
+    officials = OfficialSerializer(many=True, required=False, read_only=False)
+    merits = MeritSerializer(many=True, required=False, read_only=False)
+    committees = CommitteeSerializer(many=True, required=False, read_only=False)
 
     class Meta:
         model = Person
@@ -135,3 +134,14 @@ class PersonSerializer(serializers.ModelSerializer):
                   'company_email', 'company_phone',
                   'notes', 'members', 'boards',
                   'officials', 'merits', 'committees')
+
+class PersonAddSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Person
+        fields = ('pk', 'firstname', 'middlenames', 'lastname',
+                  'dob', 'dod', 'birthplace', 'email',
+                  'address', 'city', 'zip', 'country',
+                  'joined', 'graduated', 'company',
+                  'company_email', 'company_phone',
+                  'notes',)
