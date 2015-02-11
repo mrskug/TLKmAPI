@@ -3,4 +3,4 @@ Markdown==2.5.1
 Pygments==1.6
 django-filter==0.8
 djangorestframework==3.0.4
-django-oauth-toolkit
+django-cors-headers
