@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, filters
 from TLKrest.serializers import *
 from TLKdb.models import *
 
@@ -13,6 +13,10 @@ class PersonViewSet(viewsets.ModelViewSet):
     """
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('firstname', 'lastname',
+                     'birthplace', 'city', 'zip',
+                     'country', 'company')
 
 class MemberViewSet(viewsets.ReadOnlyModelViewSet):
     """
@@ -22,6 +26,8 @@ class MemberViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('year', 'type__name', 'person__lastname')
 
 class BoardViewSet(viewsets.ReadOnlyModelViewSet):
     """
