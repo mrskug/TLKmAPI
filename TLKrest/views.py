@@ -10,7 +10,9 @@ class PersonViewSet(viewsets.ModelViewSet):
     Lists all persons in database with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: firstname, lastname, birthplace, city, zip, country, company
     """
     queryset = Person.objects.all()
@@ -25,7 +27,9 @@ class MemberViewSet(viewsets.ReadOnlyModelViewSet):
     List all members by PK with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: year, typename, lastname
     """
     queryset = Member.objects.all()
@@ -38,7 +42,9 @@ class BoardViewSet(viewsets.ReadOnlyModelViewSet):
     List all board members by PK with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: year, typename, lastname
     """
     queryset = Board.objects.all()
@@ -51,7 +57,9 @@ class CommitteeViewSet(viewsets.ReadOnlyModelViewSet):
     List all committee members by PK with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: year, typename, lastname
     """
     queryset = Committee.objects.all()
@@ -64,7 +72,9 @@ class OfficialViewSet(viewsets.ReadOnlyModelViewSet):
     List all officials by PK with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: year, typename, lastname
     """
     queryset = Official.objects.all()
@@ -77,7 +87,9 @@ class MeritViewSet(viewsets.ReadOnlyModelViewSet):
     List all merit awards by PK with type in string format
 
     Usable methods: GET
+
     Search by appending ?search=<searchquery> to url
+
     Valid queries: year, typename, lastname
     """
     queryset = Merit.objects.all()
