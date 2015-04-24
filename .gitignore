@@ -66,5 +66,6 @@ docs/_build/
 # PyBuilder
 target/
 
-# db
+# local files
 db.sqlite3
+robots.txt
