@@ -128,7 +128,7 @@ class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('pk', 'firstname', 'middlenames', 'lastname',
-                  'dob', 'dod', 'birthplace', 'email',
+                  'dob', 'dod', 'birthplace', 'phone', 'email',
                   'address', 'city', 'zip', 'country',
                   'joined', 'graduated', 'company',
                   'company_email', 'company_phone',
@@ -140,7 +140,7 @@ class PersonAddSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
         fields = ('pk', 'firstname', 'middlenames', 'lastname',
-                  'dob', 'dod', 'birthplace', 'email',
+                  'dob', 'dod', 'birthplace', 'phone', 'email',
                   'address', 'city', 'zip', 'country',
                   'joined', 'graduated', 'company',
                   'company_email', 'company_phone',
