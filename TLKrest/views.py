@@ -1,6 +1,9 @@
-from rest_framework import viewsets, permissions, filters
+from rest_framework import viewsets, filters
+
+from TLKrest.filters import PersonFilter
 from TLKrest.serializers import *
 from TLKdb.models import *
+
 
 # ViewSets define the view behavior.
 
@@ -11,13 +14,16 @@ class PersonViewSet(viewsets.ModelViewSet):
 
     Usable methods: GET
 
-    Search by appending ?search=<searchquery> to url
+    Search by appending ?search=searchquery to url
 
     Valid queries: firstname, lastname, birthplace, city, zip, country, company
+
+    Filter by ?field=value&otherfield=othervalue&foreign__field=value
     """
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
-    filter_backends = (filters.SearchFilter,)
+    filter_backends = (filters.SearchFilter, filters.DjangoFilterBackend)
+    filter_class = PersonFilter
     search_fields = ('firstname', 'lastname',
                      'birthplace', 'city', 'zip',
                      'country', 'company')
@@ -151,6 +157,8 @@ class PersonAddViewSet(viewsets.ModelViewSet):
     """
     queryset = Person.objects.all()
     serializer_class = PersonAddSerializer
+    filter_backends = (filters.SearchFilter, filters.DjangoFilterBackend)
+    filter_class = PersonFilter
 
 # Viewsets for types
 class MemberTypeViewSet(viewsets.ModelViewSet):
