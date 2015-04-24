@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'TLKrest',
     'rest_framework',
     'corsheaders',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
