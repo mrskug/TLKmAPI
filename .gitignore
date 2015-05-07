@@ -69,3 +69,4 @@ target/
 # local files
 db.sqlite3
 robots.txt
+my.cnf
