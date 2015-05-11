@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from TLKdb.models import Person, Member, MemberType, Merit, MeritType, Committee, CommitteeType, Official, OfficialType, Board, BoardPosition
+from TLKdb.models import *
 
-
+# Registrera URLs för admin sidan
 admin.site.register(Person)
 admin.site.register(Member)
 admin.site.register(MemberType)

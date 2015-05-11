@@ -5,20 +5,20 @@ from TLKrest.serializers import *
 from TLKdb.models import *
 
 
-# ViewSets define the view behavior.
+# Vy uppsättningar definierar vyernas betéende.
 
-# Viewset for listing Persons
 class PersonViewSet(viewsets.ModelViewSet):
     """
-    Lists all persons in database with type in string format
+    Förteckning på alla personer i databasen
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=searchquery to url
+    Sökning med ?search=sökord
 
-    Valid queries: firstname, lastname, birthplace, city, zip, country, company
+    Giltiga sökfält: firstname, lastname,
+     birthplace, city, zip, country, company
 
-    Filter by ?field=value&otherfield=othervalue&foreign__field=value
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
@@ -30,13 +30,15 @@ class PersonViewSet(viewsets.ModelViewSet):
 
 class MemberViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all members by PK with type in string format
+    Förteckning på alla medlemmar enligt primärnyckel
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=<searchquery> to url
+    Sökning med ?search=sökord
 
-    Valid queries: year, typename, lastname
+    Giltiga sökfält: year, typename, lastname
+
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Member.objects.all()
     serializer_class = MemberSerializer
@@ -45,13 +47,15 @@ class MemberViewSet(viewsets.ReadOnlyModelViewSet):
 
 class BoardViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all board members by PK with type in string format
+    Förteckning på alla styrelsemedlemmar enligt primärnyckel
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=<searchquery> to url
+    Sökning med ?search=sökord
 
-    Valid queries: year, typename, lastname
+    Giltiga sökfält: year, typename, lastname
+
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
@@ -60,13 +64,15 @@ class BoardViewSet(viewsets.ReadOnlyModelViewSet):
 
 class CommitteeViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all committee members by PK with type in string format
+    Förteckning på alla utskott enligt primärnyckel
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=<searchquery> to url
+    Sökning med ?search=sökord
 
-    Valid queries: year, typename, lastname
+    Giltiga sökfält: year, typename, lastname
+
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Committee.objects.all()
     serializer_class = CommitteeSerializer
@@ -75,13 +81,15 @@ class CommitteeViewSet(viewsets.ReadOnlyModelViewSet):
 
 class OfficialViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all officials by PK with type in string format
+    Förteckning på alla funktionärer enligt primärnyckel
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=<searchquery> to url
+    Sökning med ?search=sökord
 
-    Valid queries: year, typename, lastname
+    Giltiga sökfält: year, typename, lastname
+
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Official.objects.all()
     serializer_class = OfficialSerializer
@@ -90,70 +98,72 @@ class OfficialViewSet(viewsets.ReadOnlyModelViewSet):
 
 class MeritViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    List all merit awards by PK with type in string format
+    Förteckning på alla förtjänsttecken enligt primärnyckel
 
-    Usable methods: GET
+    Användbara metoder: GET
 
-    Search by appending ?search=<searchquery> to url
+    Sökning med ?search=sökord
 
-    Valid queries: year, typename, lastname
+    Giltiga sökfält: year, typename, lastname
+
+    Filtrering med ?fältnamn=värde&främmande__fältnamn=värde
     """
     queryset = Merit.objects.all()
     serializer_class = MeritSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-# Add Viewsets
+# Vy uppsättningar för tilläggning
 class MemberAddViewSet(viewsets.ModelViewSet):
     """
-    List and add members by person pk
+    Lägg till medlemmar med person primärnyckel
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Member.objects.all()
     serializer_class = MemberAddSerializer
 
 class BoardAddViewSet(viewsets.ModelViewSet):
     """
-    List and add board members by person pk
+    Lägg till styrelsemedlemmar med person primärnyckel
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Board.objects.all()
     serializer_class = BoardAddSerializer
 
 class CommitteeAddViewSet(viewsets.ModelViewSet):
     """
-    List and add committee members by person pk
+    Lägg till utskott med person primärnyckel
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Committee.objects.all()
     serializer_class = CommitteeAddSerializer
 
 class OfficialAddViewSet(viewsets.ModelViewSet):
     """
-    List and add officials by person pk
+    Lägg till funktionärer med person primärnyckel
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Official.objects.all()
     serializer_class = OfficialAddSerializer
 
 class MeritAddViewSet(viewsets.ModelViewSet):
     """
-    List and add merits by person pk
+    Lägg till förtjänsttecken med person primärnyckel
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Merit.objects.all()
     serializer_class = MeritAddSerializer
 
 class PersonAddViewSet(viewsets.ModelViewSet):
     """
-    Add new persons to database
+    Lägg till nya personer i databasen
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = Person.objects.all()
     serializer_class = PersonAddSerializer
@@ -163,18 +173,18 @@ class PersonAddViewSet(viewsets.ModelViewSet):
 # Viewsets for types
 class MemberTypeViewSet(viewsets.ModelViewSet):
     """
-    List, add and delete member types
+    Visa, lägg till och radera medlemstyper
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
     queryset = MemberType.objects.all()
     serializer_class = MemberTypeSerializer
 
 class BoardTypeViewSet(viewsets.ModelViewSet):
     """
-    List, add and delete board types
+    Visa, lägg till och radera styrelseposter
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
 
     queryset = BoardPosition.objects.all()
@@ -182,9 +192,9 @@ class BoardTypeViewSet(viewsets.ModelViewSet):
 
 class OfficialTypeViewSet(viewsets.ModelViewSet):
     """
-    List, add and delete official types
+    Visa, lägg till och radera funktionärsposter
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
 
     queryset = OfficialType.objects.all()
@@ -192,9 +202,9 @@ class OfficialTypeViewSet(viewsets.ModelViewSet):
 
 class CommitteeTypeViewSet(viewsets.ModelViewSet):
     """
-    List, add and delete committee types
+    Visa, lägg till och radera utskott
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
 
     queryset = CommitteeType.objects.all()
@@ -202,9 +212,9 @@ class CommitteeTypeViewSet(viewsets.ModelViewSet):
 
 class MeritTypeViewSet(viewsets.ModelViewSet):
     """
-    List, add and delete merit types
+    Visa, lägg till och radera förtjänstteckentyper
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Användbara metoder: GET, PUT, UPDATE, DELETE
     """
 
     queryset = MeritType.objects.all()

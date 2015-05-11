@@ -1,34 +1,32 @@
 """
-Django settings for TLKmAPI project.
+Django inställnigar for TLKmAPI projektet.
 
-For more information on this file, see
+För mera information om denna fil se
 https://docs.djangoproject.com/en/1.7/topics/settings/
 
-For the full list of settings and their values, see
+För en full förteckning på inställningar och värden se
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+# SÄKERHETS VARNING: SECRET_KEY värdet som används i produktion
+# bör hållas hemligt
+SECRET_KEY = 'dettabörvaraenlångalfanumerisksträngmedspecialtecken'
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'snag1dh!0s*7i8q3kx=i-2yahpdp&bp!hwyyl=w%q&1_gm9xo3'
+# SÄKERHETS VARNING: Använd inte DEBUG i produktionsmiljö!
+DEBUG = False
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+TEMPLATE_DEBUG = False
 
-TEMPLATE_DEBUG = True
+ALLOWED_HOSTS = [
+    '.exempel.com',  # Tillåt domän med underdomäner
+]
 
-ALLOWED_HOSTS = []
 
-
-# Application definition
-
+# Applikationens definition
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -54,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+# Tillåt Requests från andra domäner
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_METHODS = (
@@ -66,35 +65,39 @@ CORS_ALLOW_METHODS = (
 )
 
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
+    # Använd Djangos behörighetsklasser
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissions',
     ],
+    # Autentiserings metoder
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ],
+    # Filter
     'DEFAULT_FILTER_BACKENDS': [
         'rest_framework.filters.DjangoFilterBackend',
     ]
 }
 
-
-
+# URL definitionsklass
 ROOT_URLCONF = 'TLKmAPI.urls'
 
+# WSGI namn
 WSGI_APPLICATION = 'TLKmAPI.wsgi.application'
 
 
-# Database
+# Databas
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
+    # Sqlite databas
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
+
+    # Exempel för Mysql
     #'mysql': {
     #    'ENGINE': 'django.db.backends.mysql',
     #    'OPTIONS': {
@@ -103,7 +106,7 @@ DATABASES = {
     #}
 }
 
-# Internationalization
+# Internationalisering
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -117,7 +120,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Statiska filer (CSS, JavaScript, Bilder)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'

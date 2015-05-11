@@ -62,16 +62,10 @@ class Person(models.Model):
     company_phone = models.CharField(null=True, max_length=45, blank=True)
     notes = models.TextField(null=True, max_length=1000, blank=True)
 
-#    member = models.ManyToManyField(MemberType)
-#    board = models.ManyToManyField(BoardPosition)
-#    committee = models.ManyToManyField(CommitteeType)
-#    official = models.ManyToManyField(OfficialType)
-#    merit = models.ManyToManyField(MeritType)
-
     def __str__(self):
         return '%s %s' % (self.firstname, self.lastname)
 
-
+# Medlemmar
 class Member(models.Model):
     year = models.IntegerField()
     type = models.ForeignKey(MemberType, related_name='members')
@@ -80,7 +74,7 @@ class Member(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.year, self.type, self.person)
 
-
+# Styrelseposter
 class Board(models.Model):
     year = models.IntegerField()
     type = models.ForeignKey(BoardPosition, related_name='boards')
@@ -89,7 +83,7 @@ class Board(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.year, self.type, self.person)
 
-
+# Funktionärer
 class Official(models.Model):
     year = models.IntegerField()
     type = models.ForeignKey(OfficialType, related_name='officials')
@@ -98,7 +92,7 @@ class Official(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.year, self.type, self.person)
 
-
+# Förtjänsttecken
 class Merit(models.Model):
     year = models.IntegerField()
     type = models.ForeignKey(MeritType, related_name='merits')
@@ -107,7 +101,7 @@ class Merit(models.Model):
     def __str__(self):
         return '%s %s %s' % (self.year, self.type, self.person)
 
-
+# Utskott
 class Committee(models.Model):
     year = models.IntegerField()
     type = models.ForeignKey(CommitteeType, related_name='committees')

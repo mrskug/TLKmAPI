@@ -2,6 +2,7 @@
 import django_filters
 from TLKdb.models import *
 
+# Filterklass för Person
 class PersonFilter(django_filters.FilterSet):
 
     class Meta:

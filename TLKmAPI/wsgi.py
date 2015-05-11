@@ -1,13 +1,15 @@
 """
-WSGI config for TLKmAPI project.
+WSGI konfiguration för TLKmAPI projektet.
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+Den avslöjar en WSGI modulnivå variabel ``application``
 
-For more information on this file, see
+För mer information om denna fil se
 https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 """
 
 import os, sys
+
+# sökväg för TLKmAPI
 sys.path.append('/srv/TLKmAPI/')
 os.environ["DJANGO_SETTINGS_MODULE"] = "TLKmAPI.settings"
 
