@@ -28,7 +28,7 @@ class PersonViewSet(viewsets.ModelViewSet):
                      'birthplace', 'city', 'zip',
                      'country', 'company')
 
-class MemberViewSet(viewsets.ReadOnlyModelViewSet):
+class MemberViewSet(viewsets.ModelViewSet):
     """
     List all members by PK with type in string format
 
@@ -43,7 +43,7 @@ class MemberViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-class BoardViewSet(viewsets.ReadOnlyModelViewSet):
+class BoardViewSet(viewsets.ModelViewSet):
     """
     List all board members by PK with type in string format
 
@@ -58,7 +58,7 @@ class BoardViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-class CommitteeViewSet(viewsets.ReadOnlyModelViewSet):
+class CommitteeViewSet(viewsets.ModelViewSet):
     """
     List all committee members by PK with type in string format
 
@@ -73,7 +73,7 @@ class CommitteeViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-class OfficialViewSet(viewsets.ReadOnlyModelViewSet):
+class OfficialViewSet(viewsets.ModelViewSet):
     """
     List all officials by PK with type in string format
 
@@ -88,7 +88,7 @@ class OfficialViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-class MeritViewSet(viewsets.ReadOnlyModelViewSet):
+class MeritViewSet(viewsets.ModelViewSet):
     """
     List all merit awards by PK with type in string format
 
@@ -109,7 +109,7 @@ class MemberTypeViewSet(viewsets.ModelViewSet):
     """
     List, add and delete member types
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
     """
     queryset = MemberType.objects.all()
     serializer_class = MemberTypeSerializer
