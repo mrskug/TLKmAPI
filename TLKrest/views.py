@@ -103,62 +103,6 @@ class MeritViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('year', 'type__name', 'person__lastname')
 
-# Add Viewsets
-class MemberAddViewSet(viewsets.ModelViewSet):
-    """
-    List and add members by person pk
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Member.objects.all()
-    serializer_class = MemberAddSerializer
-
-class BoardAddViewSet(viewsets.ModelViewSet):
-    """
-    List and add board members by person pk
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Board.objects.all()
-    serializer_class = BoardAddSerializer
-
-class CommitteeAddViewSet(viewsets.ModelViewSet):
-    """
-    List and add committee members by person pk
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Committee.objects.all()
-    serializer_class = CommitteeAddSerializer
-
-class OfficialAddViewSet(viewsets.ModelViewSet):
-    """
-    List and add officials by person pk
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Official.objects.all()
-    serializer_class = OfficialAddSerializer
-
-class MeritAddViewSet(viewsets.ModelViewSet):
-    """
-    List and add merits by person pk
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Merit.objects.all()
-    serializer_class = MeritAddSerializer
-
-class PersonAddViewSet(viewsets.ModelViewSet):
-    """
-    Add new persons to database
-
-    Usable methods: GET, PUT, UPDATE, DELETE
-    """
-    queryset = Person.objects.all()
-    serializer_class = PersonAddSerializer
-    filter_backends = (filters.SearchFilter, filters.DjangoFilterBackend)
-    filter_class = PersonFilter
 
 # Viewsets for types
 class MemberTypeViewSet(viewsets.ModelViewSet):

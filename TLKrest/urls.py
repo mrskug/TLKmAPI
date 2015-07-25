@@ -6,13 +6,6 @@ from TLKrest.views import *
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 
-# Add
-router.register(r'persons/add', PersonAddViewSet, base_name='persons')
-router.register(r'members/add', MemberAddViewSet, base_name='members')
-router.register(r'boards/add', BoardAddViewSet, base_name='boards')
-router.register(r'committees/add', CommitteeAddViewSet, base_name='committees')
-router.register(r'officials/add', OfficialAddViewSet, base_name='officials')
-router.register(r'merits/add', MeritAddViewSet, base_name='merits')
 
 # Types
 router.register(r'membertypes', MemberTypeViewSet)
