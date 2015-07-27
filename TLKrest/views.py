@@ -10,9 +10,9 @@ from TLKdb.models import *
 # Viewset for listing Persons
 class PersonViewSet(viewsets.ModelViewSet):
     """
-    Lists all persons in database with type in string format
+    Lists all persons in database
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=searchquery to url
 
@@ -30,9 +30,9 @@ class PersonViewSet(viewsets.ModelViewSet):
 
 class MemberViewSet(viewsets.ModelViewSet):
     """
-    List all members by PK with type in string format
+    List all members
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=<searchquery> to url
 
@@ -45,9 +45,9 @@ class MemberViewSet(viewsets.ModelViewSet):
 
 class BoardViewSet(viewsets.ModelViewSet):
     """
-    List all board members by PK with type in string format
+    List all board members
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=<searchquery> to url
 
@@ -60,9 +60,9 @@ class BoardViewSet(viewsets.ModelViewSet):
 
 class CommitteeViewSet(viewsets.ModelViewSet):
     """
-    List all committee members by PK with type in string format
+    List all committee members
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=<searchquery> to url
 
@@ -75,9 +75,9 @@ class CommitteeViewSet(viewsets.ModelViewSet):
 
 class OfficialViewSet(viewsets.ModelViewSet):
     """
-    List all officials by PK with type in string format
+    List all officials
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=<searchquery> to url
 
@@ -90,9 +90,9 @@ class OfficialViewSet(viewsets.ModelViewSet):
 
 class MeritViewSet(viewsets.ModelViewSet):
     """
-    List all merit awards by PK with type in string format
+    List all merit awards
 
-    Usable methods: GET
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
 
     Search by appending ?search=<searchquery> to url
 
@@ -118,7 +118,7 @@ class BoardTypeViewSet(viewsets.ModelViewSet):
     """
     List, add and delete board types
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
     """
 
     queryset = BoardPosition.objects.all()
@@ -128,7 +128,7 @@ class OfficialTypeViewSet(viewsets.ModelViewSet):
     """
     List, add and delete official types
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
     """
 
     queryset = OfficialType.objects.all()
@@ -138,7 +138,7 @@ class CommitteeTypeViewSet(viewsets.ModelViewSet):
     """
     List, add and delete committee types
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
     """
 
     queryset = CommitteeType.objects.all()
@@ -148,7 +148,7 @@ class MeritTypeViewSet(viewsets.ModelViewSet):
     """
     List, add and delete merit types
 
-    Usable methods: GET, PUT, UPDATE, DELETE
+    Usable methods: GET, POST, PUT, UPDATE, DELETE
     """
 
     queryset = MeritType.objects.all()
