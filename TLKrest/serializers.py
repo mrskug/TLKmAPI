@@ -76,11 +76,6 @@ class CommitteeSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('url',  'person', 'year', 'type')
 
 class PersonSerializer(serializers.HyperlinkedModelSerializer):
-    members = MemberSerializer(many=True, required=False, read_only=True)
-    boards = BoardSerializer(many=True, required=False, read_only=True)
-    officials = OfficialSerializer(many=True, required=False, read_only=True)
-    merits = MeritSerializer(many=True, required=False, read_only=True)
-    committees = CommitteeSerializer(many=True, required=False, read_only=True)
 
     class Meta:
         model = Person
