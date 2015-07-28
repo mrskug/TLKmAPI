@@ -70,4 +70,3 @@ target/
 db.sqlite3
 robots.txt
 my.cnf
-examples/csv2tlk/config.py
