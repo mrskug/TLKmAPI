@@ -5,7 +5,7 @@ __author__ = 'Christoffer Holmberg'
 import csv
 import json
 import requests
-from .config import url, user, pasw
+from config import url, user, pasw
 
 headers = {'content-type': 'application/json'}
 
@@ -22,6 +22,12 @@ for row in reader:
     for i, j in row.items():
         if j == '':
             row[i] = None
+    row['members'] = []
+    row['boards'] = []
+    row['officials'] = []
+    row['merits'] = []
+    row['committees'] = []
+
     print(row)
     r = requests.post(url, auth=(user, pasw), headers=headers, data=(json.dumps(row)))
     print(json.dumps(row))
