@@ -5,11 +5,9 @@ __author__ = 'Christoffer Holmberg'
 import csv
 import json
 import requests
+from .config import url, user, pasw
 
-url = 'http://url-to.api/persons/'
 headers = {'content-type': 'application/json'}
-user = 'user'
-pasw = 'pass'
 
 csvfile = open('mockdata.csv', 'r', encoding="utf-8",)
 
